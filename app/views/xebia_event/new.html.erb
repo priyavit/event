@@ -1,0 +1,23 @@
+<h1>Add new Event</h1>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label>Event Name</label>:
+<%= text_field 'events', 'name' %></p>
+
+<p><label>Venue</label>:
+<%= text_field 'events', 'venue' %></p>
+
+<p><label>Date</label>:
+<%= text_field 'events', 'date' %></p>
+
+<p>
+    <b>Status</b><br />
+    <%= radio_button 'events', 'status', value = EventStatus::ACTIVE%> Active<br />
+    <%= radio_button 'events', 'status', value = EventStatus::CANCELLED%> Cancelled<br />
+</p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'list'} %>

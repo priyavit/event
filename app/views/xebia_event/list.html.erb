@@ -1,0 +1,13 @@
+<% if @events.blank? %>
+<p>There are no Events currently</p>
+<% else %>
+<p>These are the current Events</p>
+
+<ul id = "events">
+   <% @events.each do |event| %>
+   <li><%= link_to event.name, {:action => 'show_event_details', :id => event.id} -%></li>
+   <% end %>
+</ul>
+
+<% end %>
+<p><%= link_to "Add new Event", {:action => 'new' }%></p>

@@ -1,0 +1,17 @@
+<h1><%= @event.name %></h1>
+
+<p>
+   <strong>Venue: </strong> <%= @event.venue %><br />
+   <strong>Date :</strong> <%= @event.date %><br />
+   <strong>Status:</strong> 
+   <% if @event.status.to_i == EventStatus::ACTIVE%>
+   	Active
+   	<% else %>
+   	Cancelled
+   	<%end%>
+</p>
+
+<hr />
+
+<%= link_to 'Back', {:action => 'list'} %>
+<%= link_to 'Edit Event Details', {:action => 'edit', :id =>@event.id} %>

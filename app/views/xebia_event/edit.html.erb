@@ -1,0 +1,20 @@
+
+<h1>Edit Event Details</h1>
+<%= form_for @event, :url =>{:action => "update", :id =>@event.id} do |f| %>
+
+<p>Name: <%= f.text_field 'name' %></p>
+<p>Venue: <%= f.text_field  'venue' %></p>
+<p>Date: <%= f.text_field 'date' %></p>
+<p>
+    <b>Status</b><br />
+    <%= f.radio_button :status, EventStatus::ACTIVE, :checked => true%> Active<br />
+    <%= f.radio_button :status,  EventStatus::CANCELLED %> Cancelled<br />
+</p>
+
+
+
+
+<%= f.submit "Save changes" %>
+<% end %>
+
+<%= link_to 'Back', {:action => 'list' } %>
