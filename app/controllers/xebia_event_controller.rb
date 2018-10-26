@@ -1,5 +1,6 @@
 class XebiaEventController < ApplicationController
 	def list
+
 		@events = XebiaEvent.all
 	end
 
@@ -13,8 +14,12 @@ class XebiaEventController < ApplicationController
 
 	def update
  		@event = XebiaEvent.find_by(id: params[:id].to_i)
-	   if  @event.update_attributes(name: params[:xebia_event]["name"],venue:params[:xebia_event]["venue"],date:params[:xebia_event]["date"],status:params[:xebia_event]["status"])
+	   if  @event.update_attributes(name: params[:xebia_event]["name"],venue:params[:xebia_event]["venue"],date:params[:xebia_event]["date"],status:params[:xebia_event]["status"]) == true
 	      redirect_to :action => 'show_event_details', :id => @event
+	  else
+	  		@event.errors.messages.each do |k,val|
+  				puts val
+  			end
 	   end
 	end
 
@@ -26,6 +31,10 @@ class XebiaEventController < ApplicationController
 		
 	   if @event.save
 	      redirect_to :action => 'list'
+  		else
+  			@event.errors.messages.each do |k,val|
+  				puts val
+  			end
 	   end
 	   
 	end

@@ -1,0 +1,6 @@
+<% if @event.errors.messages.length > 0 %>
+	<% @event.errors.messages.each_pair do |key, value| %>
+		<%= value %></br>
+	<% end %>
+<% end %>
+<%= link_to 'ok', {:action => 'new'} %>
